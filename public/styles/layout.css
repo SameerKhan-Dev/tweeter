@@ -29,10 +29,16 @@ nav {
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
-  main {
+
+ */
+ main {
   width: 90%;
   height: auto;
   align-self: center;
  }
- */
 
+main p {
+
+  text-align: center;
+
+}
