@@ -19,6 +19,9 @@ body {
   background-color: #f4f1ec;
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 nav {
   font-family: 'Bungee', cursive;
@@ -26,4 +29,10 @@ nav {
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
+  main {
+  width: 90%;
+  height: auto;
+  align-self: center;
+ }
  */
+
