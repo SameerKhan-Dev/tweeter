@@ -4,6 +4,10 @@ const userHelper    = require("../lib/util/user-helper")
 
 const express       = require('express');
 const tweetsRoutes  = express.Router();
+//^ var tweetsRoutes is like const app = express() but in a separate file.
+// tweetsRoutes is an object with get, post etc routes functions.
+// we are exporting all the routes found within tweetsRoutes. 
+
 
 module.exports = function(DataHelpers) {
 

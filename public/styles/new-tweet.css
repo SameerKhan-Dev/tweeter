@@ -1,0 +1,55 @@
+/*
+    <main class="container">
+
+      <section class = "new-tweet">
+
+        <h2>Compose tweet</h2>
+        <form id = "newTweetForm" action = "POST" method = "/tweets">
+
+          <label for= "tweet-text">What are you humming about?</label>
+          <textarea name= "text" id="tweet-text"></textarea>
+          <div class="newTweet>
+            <button type="submit">Tweet</button>
+            <!-- The <output> tag is used to represent the result of a calculation (like one performed by a script)!-->
+            <output name ="counter" class="counter" for="tweet-text">140</output>
+          </div>
+        </form>
+      </section>
+
+    </main>
+*/ 
+
+.newTweet {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.newTweet button {
+
+  background-color:  #4056A1;
+  color: #f4f1ec;
+  font-family: 'Bungee', cursive;
+}
+.newTweet output {
+  font-family: 'Bungee', cursive;
+
+}
+#newTweetForm {
+  display: flex;
+  flex-direction:column;
+  
+}
+#tweet-text {
+  background-color: #f4f1ec;
+  border: none;
+  border-bottom: 4px solid black;
+  border-bottom-color: #545149;
+  outline: none;
+}
+
+.new-tweet {
+
+  background: #f4f1ec;
+}
