@@ -9,6 +9,7 @@ body header.pageHeader {
   align-items: center;
   background-image: url("/images/beige-paper.png");
   background-color: #fca903;
+  margin-top: 122px;
 }
 
 .avatarImage {
