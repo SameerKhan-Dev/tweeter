@@ -8,6 +8,7 @@ console.log("HELLO FROM CLIENT.JS");
 
 $(document).ready(function() {
   // tweets in this case: is the array of tweets objects
+ 
 
   const renderTweets = function(tweets) {
     // loops through the tweets
@@ -16,11 +17,12 @@ $(document).ready(function() {
       // calls createTweetElement for each tweet
       let $tweet = createTweetElement(tweets[x]);
       // append the new html element into the html document, under the element with id- tweets-container.
+      console.log("the tweets[x] element is", tweets[x]);
       $("#tweets-container").prepend($tweet);
 
     }
     // takes return value and appends it to the tweets container.
-
+   
   }
 
   /*
@@ -35,6 +37,10 @@ $(document).ready(function() {
     //
     // the tweet object will be in the form shown below from server (in this example look at the structure of tweetData).
     // you can use the $() JQuery function to create new HTML element or structure etc, even if its nested etc.
+    
+
+
+
     let $tweet =  
     `<article>
       <header>
@@ -65,12 +71,109 @@ $("#newTweetForm").on("submit", function (event) {
   // Prevents default action of form, which is to perform the submit event.
   event.preventDefault();
 
-})
+  // now form data submission
 
+  /*
+    Our server is configured to receive form data formatted as a query string.
+    so for example:  field1=value1&field2=value2&field3=value3
 
+    Consider the jQuery .serialize() function, which turns the form data into a query string.
+    This serialized data should be sent to the server in the data field of the AJAX POST Request.
+
+    A common alternative to a query string would be to serialize the form data to a JSON string. 
+    However, our server is configured to receive the query string format. 
+  */
+
+  // step 1: convert our form submission data into query string format.
+  let serializedInputData = $("#newTweetForm").serialize();
+  //console.log("serializedInputData is", serializedInputData);
+
+  let url = "http://localhost:8080/tweets";
+  
+  /*
+  let targetElement = $(this).find("#tweet-text");
+  console.log("targetElement is : ", targetElement);
+  let data = targetElement.val();
+  */ 
+  // set data to be serialized version
+  let data = serializedInputData;
+  console.log("serializedInputData is: ", data);
+  //console.log("data submitted is: ", data);
+
+  // implement AJAX Post Request as follows:
+  // the $ object's ajax request
+  // equivalent to jQuery.ajax()function.
+  // $ is shorthand notation for $ object.
+  // $() is actually a method named 
+  // ajax is a method inside the object $. That method returns a promise and is identified to be an asynchronous function by nature.
+  // we pass the values: post -type, url (url sending to) and our data to be posted in this AJAX Post Request.
+  // the .ajax function returns a promise (which contains the result or response from the server, and can be accessed
+  // through the .then function! amazing!);
+  let userTweetInput = $("#tweet-text").val();
+
+  //console.log("userTweetInput is: ", userTweetInput);
+
+  if (userTweetInput.length > 140 ) {
+
+    alert ("Error! Tweet content exceed maximum characters limit of 140.")
+  }
+  else if (userTweetInput === "") {
+
+    alert ("Error! Tweet content is empty!");
+  }
+  else {
+
+    $.ajax({
+      type: "POST",
+      url: url,
+      data, data
+    }).then((result) => {
+  
+      // .then will will get executed when response is successful
+      // result here is the response from the server (i.e JSON Array Object expected in this case.)
+      console.log("The response/result from server is: ");
+      console.log(result);
+      //loadtweets();
+  
+    })
+    
+    .catch((err) => {
+  
+      console.log("Error Message from Server: ");
+      console.log(err); 
+    })
+
+  }
+
+});
+
+/// Create a loadtweets function
+/*
+  The loadtweets function will use JQUERY to /tweets and receive the array of tweets as JSON.
+
+*/ 
+let url = "http://localhost:8080/tweets";
+
+const loadtweets = function () {
+  $.ajax({
+    type: "GET",
+    url: url,
+  }).then((result) => {
+
+    // take result JSON Object and console.log it out for now;
+    //console.log("the result from get object is: ");
+    //console.log(result);
+    renderTweets(result);
+
+  }).catch((err) => console.log(err));
+};
 
 
 // implement renderTweets function:
+
+
+
+
 
 /*
   Define another function renderTweets. Thsi function can be responsible for taking in an array of
@@ -104,6 +207,8 @@ console.log($tweet); // to see what it looks like
 */
 
 // Fake data taken from initial-tweets.json
+
+/*
 const data = [
   {
     "user": {
@@ -130,9 +235,10 @@ const data = [
 ]
 
 
+*/
 
+//renderTweets(data);
+//loadtweets();
 
-renderTweets(data);
-
-
+loadtweets();
 }); 
