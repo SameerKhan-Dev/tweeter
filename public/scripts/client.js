@@ -128,13 +128,14 @@ $("#newTweetForm").on("submit", function (event) {
       url: url,
       data, data
     }).then((result) => {
-  
-      // .then will will get executed when response is successful
-      // result here is the response from the server (i.e JSON Array Object expected in this case.)
-      console.log("The response/result from server is: ");
-      console.log(result);
-      //loadtweets();
-  
+      
+      // empty the current tweets-container.
+      $('#tweets-container').empty();
+       // load the tweets page.
+      loadtweets();
+      $("#tweet-text").val("");
+      $("#newTweetForm").find(".counter").val(140);
+      //let counter = $(this).parent().find(".counter")
     })
     
     .catch((err) => {
@@ -239,6 +240,6 @@ const data = [
 
 //renderTweets(data);
 //loadtweets();
+  loadtweets();
 
-loadtweets();
 }); 
