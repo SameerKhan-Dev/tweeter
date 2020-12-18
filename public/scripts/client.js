@@ -4,6 +4,12 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+const escape =  function(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
 console.log("HELLO FROM CLIENT.JS");
 
 $(document).ready(function() {
@@ -17,7 +23,7 @@ $(document).ready(function() {
       // calls createTweetElement for each tweet
       let $tweet = createTweetElement(tweets[x]);
       // append the new html element into the html document, under the element with id- tweets-container.
-      console.log("the tweets[x] element is", tweets[x]);
+     // console.log("the tweets[x] element is", tweets[x]);
       $("#tweets-container").prepend($tweet);
 
     }
@@ -51,7 +57,7 @@ $(document).ready(function() {
         </div> 
       </header>
       <section>
-        <span class ="tweetFromUser">${tweetObject.content.text}</span>
+        <span class ="tweetFromUser">${escape(tweetObject.content.text)}</span>
       </section>
       <footer>
         <span>10 days ago</span>
@@ -84,7 +90,26 @@ $("#newTweetForm").on("submit", function (event) {
     However, our server is configured to receive the query string format. 
   */
 
+
+  //To prevent cross site scripting attacks set the data to be in a safe / secure format by using the .text()
+  // jquery method that can be used to retrieve or set the value of an element, which internally uses the
+  // createTextNode() DOM Method, which escapes unsafe characters, so it is safe to use with untrusted text. 
+  // escaping characters is one method to help prevent cross-site scripting attacks where user can put valid html or js code as input
+
+  // unsafe input extracted
+  // let originalInput = escape($("#tweet-text").text());
+  //$("#tweet-text").val(escape($("#tweet-text").text()));
+  //console.log(typeof originalInput);
+  //console.log(typeof $("#tweet-text").text());
+  //reset the content using .text();
+  //$("#tweet-text").text(originalInput);
+
+  //console.log("the value of tweet-text is: ");
+  //console.log($("#tweet-text").val());
+
   // step 1: convert our form submission data into query string format.
+
+  //let dataSecured = $("#tweet-text").text().serialize();
   let serializedInputData = $("#newTweetForm").serialize();
   //console.log("serializedInputData is", serializedInputData);
 
@@ -95,11 +120,15 @@ $("#newTweetForm").on("submit", function (event) {
   console.log("targetElement is : ", targetElement);
   let data = targetElement.val();
   */ 
+
+
+
   // set data to be serialized version
   let data = serializedInputData;
+  
   console.log("serializedInputData is: ", data);
   //console.log("data submitted is: ", data);
-
+  
   // implement AJAX Post Request as follows:
   // the $ object's ajax request
   // equivalent to jQuery.ajax()function.

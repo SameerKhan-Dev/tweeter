@@ -18,7 +18,7 @@ console.log("HELLO THERE!");
 $(document).ready(function() {
  
   // our code goes here
-  console.log("DOCUMENT READY FAM!");
+  // console.log("DOCUMENT READY FAM!");
   /*
         <main class="container">
 
