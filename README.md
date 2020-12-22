@@ -8,7 +8,7 @@ Node, Express and MongoDB for back-end. (Back-end code was supplied by Lighthous
 
 ## Final Product
 
-!["Screenshot of Home Page"]()
+!["Screenshot of Home Page"](https://github.com/SameerKhan-Dev/tweeter/blob/master/public/images/Screenshot%20of%20home%20Page.png?raw=true)
 
 ## Getting Started
 
