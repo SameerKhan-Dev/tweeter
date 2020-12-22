@@ -2,7 +2,7 @@
  * Client-side JS logic goes here
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
+*/
 
 const escape =  function(str) {
   let div = document.createElement('div');
@@ -10,11 +10,77 @@ const escape =  function(str) {
   return div.innerHTML;
 }
 
+const timeDisplay = function (tweetObj) {
+
+  let currentTime = new Date();
+  let currentTimeMillisecs = currentTime.getTime();
+
+  let timePostedMillisecs = tweetObj.created_at;
+
+  let postAge = currentTimeMillisecs - timePostedMillisecs;
+  
+  let tweetPostAge = "Empty";
+  
+  // milliseconds in a second : 
+  if (postAge < 60000 ) {
+
+    let timeSeconds = Math.ceil(postAge / 1000).toFixed(0);
+    if (timeSeconds <= 1) {
+
+      tweetPostAge = `${timeSeconds} second ago`;
+    }
+    else {
+      tweetPostAge = `${timeSeconds} seconds ago`;
+    }
+
+  } else if (postAge >= 60000 && postAge < 3600000) {
+    let timeMinutes = (Math.ceil(postAge / (1000 *60)).toFixed(0));
+
+    if (timeMinutes <= 1) {
+
+      tweetPostAge = `${timeMinutes} minute ago`;
+    }
+    else {
+      tweetPostAge = `${timeMinutes} minutes ago`;
+    }
+
+  } else if (postAge >= 3600000 && postAge < 86400000) {
+
+    let totalTime = Math.ceil(postAge / (1000 *60*60)).toFixed(0);
+ 
+      tweetPostAge = `${timeHours} hours ago`;
+   
+  } else if (postAge >= 86400000) {
+
+    let timeDays = Math.ceil(postAge / (1000 *60*60*24)).toFixed(0);
+  
+      tweetPostAge = `${timeDays} days ago`;
+    
+  }
+  
+
+  return tweetPostAge;
+}
+
 console.log("HELLO FROM CLIENT.JS");
 
 $(document).ready(function() {
   // tweets in this case: is the array of tweets objects
- 
+  
+
+  $("#writeTweet").on("click", function (event) {
+
+    if($("#newTweetSection").is(':hidden')) {
+
+      $("#newTweetSection").slideDown("slow");
+
+    } else {
+
+      $("#newTweetSection").hide();
+    }
+
+  });
+
 
   const renderTweets = function(tweets) {
     // loops through the tweets
@@ -44,9 +110,10 @@ $(document).ready(function() {
     // the tweet object will be in the form shown below from server (in this example look at the structure of tweetData).
     // you can use the $() JQuery function to create new HTML element or structure etc, even if its nested etc.
     
-
-
-
+    let tweetPostAge = timeDisplay(tweetObject);
+    
+    const tweetTime = new Date(tweetObject["created_at"]).toLocaleString();
+    const milliSec = Date.now() - tweetTime;
     let $tweet =  
     `<article>
       <header>
@@ -60,8 +127,8 @@ $(document).ready(function() {
         <span class ="tweetFromUser">${escape(tweetObject.content.text)}</span>
       </section>
       <footer>
-        <span>10 days ago</span>
-        <span><i class="fas fa-flag"></i> <i class="fas fa-retweet"></i><i class="fas fa-heart"></i></span>
+        <span>${tweetPostAge}</span>
+        <span class = "socialIcons"><i class="fas fa-flag"></i> <i class="fas fa-retweet"></i><i class="fas fa-heart"></i></span>
       </footer>
     </article>`;
     return $tweet;

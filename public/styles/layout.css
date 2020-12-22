@@ -141,10 +141,24 @@ article header span i {
   color: purple;
 }
 
-article:hover header span i {
+article:hover header span i{
 
   padding-right: 15px; 
-  color: purple;
-  box-shadow: 1px 1px;
+
 }
 
+article:hover footer span i{
+
+  color: #871F78
+  
+}
+article:hover footer span.socialIcons {
+
+  opacity: 1;
+  
+}
+
+.socialIcons {
+
+  opacity: 0;
+}

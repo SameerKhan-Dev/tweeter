@@ -31,7 +31,8 @@
     <nav>
       <span id = "logo">tweeter</span>
       <div class = "navWriteTweet">
-        <span id = "writeTweet"><b>Write</b> a new tweet</span>
+        <!--<button id = "writeTweet"><b>Write</b> a new tweet</button> -->
+        <button type="button" id = "writeTweet"><b>Write</b> a new tweet</a></button>
         <img id = "arrowButton" src="/styles/down-arrows.png">
       </div>
     </nav>
@@ -47,7 +48,7 @@
     </header> 
       <!-- Page-specific (main) content here -- content -->
     <main class="container mainContent">   
-        <section class = "new-tweet"> 
+        <section id = "newTweetSection" class = "new-tweet"> 
           <h4  id = "errorMsg" class = "tweet-error"></h4>
           <h2>Compose tweet</h2>
           <form id="newTweetForm" action = "/tweets" method = "POST">
