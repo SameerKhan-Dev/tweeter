@@ -27,11 +27,7 @@ nav {
   font-family: 'Bungee', cursive;
 }
 
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
-
- */
- main {
+main {
   width: 90%;
   height: auto;
   align-self: center;
@@ -43,7 +39,7 @@ nav {
   align-self: center;
   margin: 5%;
  }
- .bodySection {
+.bodySection {
 
   display:flex;
   flex-direction:column;
@@ -155,10 +151,12 @@ article:hover footer span i{
 article:hover footer span.socialIcons {
 
   opacity: 1;
-  
 }
 
 .socialIcons {
-
   opacity: 0;
+}
+.tweetFromUser {
+
+  overflow-wrap: break-word;
 }

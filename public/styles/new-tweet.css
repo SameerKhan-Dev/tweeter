@@ -1,23 +1,4 @@
-/*
-    <main class="container">
-
-      <section class = "new-tweet">
-
-        <h2>Compose tweet</h2>
-        <form id = "newTweetForm" action = "POST" method = "/tweets">
-
-          <label for= "tweet-text">What are you humming about?</label>
-          <textarea name= "text" id="tweet-text"></textarea>
-          <div class="newTweet>
-            <button type="submit">Tweet</button>
-            <!-- The <output> tag is used to represent the result of a calculation (like one performed by a script)!-->
-            <output name ="counter" class="counter" for="tweet-text">140</output>
-          </div>
-        </form>
-      </section>
-
-    </main>
-*/ 
+/* Styling for the nav-bar */
 
 .newTweet {
   display:flex;
@@ -54,15 +35,20 @@
 
   background: #f4f1ec;
 }
-/*
-  styles the error message when tweet input is not valid
-*/
+
 .tweet-error {
   background-color:#ffe6e6;
   color:#ff3300;
-  top:
+  
 }
 
 .errorHidden {
   display: none;
+  
+}
+
+#tweetButtonSubmit:hover {
+
+  outline: solid;
+  outline-color: #66ccff;
 }

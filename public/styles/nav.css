@@ -32,23 +32,19 @@ nav {
 
 #writeTweet {
   height: 35%;
-  
   align-self:flex-start; 
-  
 }
+
 #arrowButton {
-  
-  /*align-self:flex-end;*/
   width: 10%;
   height: 10%;
   padding-top:4px;
-
 }
 
 #writeTweet {
-
   background: #4056A1;
   color: white;
   border: none;
   outline: none;
+  font-family: sans-serif;
 }
