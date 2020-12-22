@@ -16,13 +16,14 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/responsive-layout.css" type="text/css" />
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
-    
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
   </head>
 
   <body>
@@ -34,18 +35,20 @@
         <img id = "arrowButton" src="/styles/down-arrows.png">
       </div>
     </nav>
-    <header class = "pageHeader"> 
+    <section class = "bodySection">
+    <header class = "pageHeader">   <!-- header === feature-->
       <div class = "avatarImage">
           <img class = "image" src="/images/profile-hex.png"> 
       </div>
-      <br>
-      <div class = "userName">
+        <br>
+        <div class = "userName">
           <h2 class = "name"><b>Your</b> Name</h2>
-      </div>
-   </header> 
-    <!-- Page-specific (main) content here -->
-    <main class="container">   
-        <section class = "new-tweet">
+    </div>
+    </header> 
+      <!-- Page-specific (main) content here -- content -->
+    <main class="container mainContent">   
+        <section class = "new-tweet"> 
+          <h4  id = "errorMsg" class = "tweet-error"></h4>
           <h2>Compose tweet</h2>
           <form id="newTweetForm" action = "/tweets" method = "POST">
             <label for= "tweet-text">What are you humming about?</label>
@@ -57,7 +60,7 @@
             </div>
           </form>
         </section>
-        <section id = "tweets-container">
+        <section id = "tweets-container"> 
           <!--
             <article>
             <header>
@@ -76,8 +79,8 @@
             </footer>
           </article>
           -->
-          
-        </section>
-    </main>
+          </section>
+      </main>
+    </section>
   </body>
 </html>

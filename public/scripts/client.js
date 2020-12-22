@@ -67,6 +67,7 @@ $(document).ready(function() {
     return $tweet;
   } 
 
+//$("#errorMsg").addClass("errorHidden");
 // attach a event handler to handle the submit event that gets fired
 // when submitting the form, through use of button for example in this case.
 // i.e Using jQuery we can use event handlers to prevent the existing form submission 
@@ -114,15 +115,13 @@ $("#newTweetForm").on("submit", function (event) {
   //console.log("serializedInputData is", serializedInputData);
 
   let url = "http://localhost:8080/tweets";
-  
+  $("#errorMsg").hide();
   /*
   let targetElement = $(this).find("#tweet-text");
   console.log("targetElement is : ", targetElement);
   let data = targetElement.val();
   */ 
-
-
-
+ 
   // set data to be serialized version
   let data = serializedInputData;
   
@@ -143,15 +142,21 @@ $("#newTweetForm").on("submit", function (event) {
   //console.log("userTweetInput is: ", userTweetInput);
 
   if (userTweetInput.length > 140 ) {
-
-    alert ("Error! Tweet content exceed maximum characters limit of 140.")
+    // by default class is on. when error is there we want to remove the class.
+    //$("#errorMsg").removeClass("errorHidden");
+    $("#errorMsg").text("Error! Tweet must not exceed maximum characters limit of 140.");
+    $("#errorMsg").slideDown("slow");
+    //alert ("Error! Tweet content exceed maximum characters limit of 140.")
   }
   else if (userTweetInput === "") {
-
-    alert ("Error! Tweet content is empty!");
+    $("#errorMsg").text("Error! Tweet content is empty!");
+   // $("#errorMsg").removeClass("errorHidden");
+    
+    $("#errorMsg").slideDown("slow");
+    //alert ("Error! Tweet content is empty!");
   }
   else {
-
+   // $(".tweet-error .errorHidden").removeClass("errorHidden");
     $.ajax({
       type: "POST",
       url: url,

@@ -43,7 +43,7 @@ $(document).ready(function() {
 
   $("#tweet-text").on("input", function(){
 
-    console.log("this is: ",this);
+    //console.log("this is: ",this);
     let inputValue = $(this).val();
     let lengthValue = inputValue.length;
 
@@ -58,7 +58,9 @@ $(document).ready(function() {
      counter.addClass("redCounter");
 
     } else {
-      
+
+      //$("#errorMsg").addClass("errorHidden");
+      $("#errorMsg").hide();
       counter.removeClass("redCounter");
 
     }

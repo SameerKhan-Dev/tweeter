@@ -54,3 +54,15 @@
 
   background: #f4f1ec;
 }
+/*
+  styles the error message when tweet input is not valid
+*/
+.tweet-error {
+  background-color:#ffe6e6;
+  color:#ff3300;
+  top:
+}
+
+.errorHidden {
+  display: none;
+}

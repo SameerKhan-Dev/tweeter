@@ -37,6 +37,19 @@ nav {
   align-self: center;
  }
 
+ .mainContent {
+  width: 90%;
+  height: auto;
+  align-self: center;
+  margin: 5%;
+ }
+ .bodySection {
+
+  display:flex;
+  flex-direction:column;
+  margin-top: 140px;
+ }
+
 main p {
   text-align: center;
 }
@@ -60,6 +73,7 @@ article:hover div span.tweeterTagName{
 article:hover {
 
   opacity: 1;
+  box-shadow: 10px 10px #D3D3D3;
 }
 .tweeterTagName {
 
@@ -124,5 +138,13 @@ article section {
 article header span i {
 
   padding-right: 15px; 
-
+  color: purple;
 }
+
+article:hover header span i {
+
+  padding-right: 15px; 
+  color: purple;
+  box-shadow: 1px 1px;
+}
+

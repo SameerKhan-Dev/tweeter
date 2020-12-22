@@ -1,0 +1,74 @@
+
+
+  /* Phone Styles */
+  @media only screen and (min-width: 320px) and (max-width: 768px) { 
+
+    body header .pageHeader {
+  
+      margin-top: 10px;
+  
+    }
+    
+    .bodySection {
+  
+      display: flex;
+      flex-direction: column;
+      margin-top: 0px;
+      width: 100%;
+    }
+    .mainContent {
+  
+      margin-top: 0%;
+      
+    }
+  }
+  /* Tablet Styles */
+@media only screen and (min-width: 768px) {
+pageHeader
+  body header . {
+
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .bodySection {
+
+    display: flex;
+    flex-direction: column;
+    margin-top: 0px;
+    width: 100%;
+  }
+  .mainContent {
+
+    margin-top: 0%;
+    
+  }
+}
+/* Laptops / Desktops: minimum width of 1024px */
+@media only screen and (min-width: 1024px) {
+/* Write CSS rules that target Laptop/Desktop screen sizes and beyond */
+
+  body header.pageHeader {
+
+    margin-top: 100px;
+    width: 33.3%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+ .mainContent {
+
+    margin-top: 5%;
+    width: 66.7%;
+  }
+  .bodySection {
+
+    display: flex;
+    flex-direction: row;
+    margin-top: 122px;
+    width: 100%;
+  }
+
+}
+
+
